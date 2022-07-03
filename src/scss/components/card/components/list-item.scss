@@ -1,0 +1,92 @@
+@import '../../../common/variables.scss';
+
+.list-item {
+    margin: 9px 0 18px;
+    list-style-type: none;
+}
+
+.checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &:hover + .checkbox__label .text{
+        color: $primaryColor;
+    }
+
+    &:hover+.checkbox__label::before {
+        border: none;
+        background-color: $checkBoxHoverColor;
+        transition: background-color 500ms ease 0ms, border 500ms ease 0ms;
+    }
+
+    &:checked + .checkbox__label{
+        color:$notActiveColor;
+        text-decoration: line-through;
+
+        &::before {
+            border-color: $primaryColor;
+            border: none;
+            background-color: $primaryColor;
+            background-image: url($checkBoxImgURL);
+            transition: background-color 500ms ease 0ms, border 500ms ease 0ms;
+        }
+
+        & .checkbox__text {
+            color:$notActiveColor;
+            transition: color 500ms ease 0ms;
+        }
+
+        & .checkbox__about {
+            color:$notActiveColor;
+            transition: color 500ms ease 0ms;
+        }
+    }
+
+        
+    &+.checkbox__label {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        user-select: none;   
+        
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            flex-grow: 0;
+            border: none;
+            background-color: $notActiveColor ;
+            border-radius: 6px;
+            margin-right: 15px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 50% 50%;
+            transition: background-color 500ms ease 0ms, border 500ms ease 0ms;
+        }
+    }
+
+    &__label-column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__text {
+        font-size: 16px;
+        color:$brightestColor;
+        transition: color 500ms ease 0ms;
+    }
+
+    &__about {
+        font-size: 12px;
+        white-space: nowrap;
+        color:$notActiveColor;
+        transition: all 500ms ease 0ms;
+
+        &-wrap {
+            height: 15px;
+        }
+    }
+} 

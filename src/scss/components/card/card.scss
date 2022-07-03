@@ -1,0 +1,151 @@
+@import '../../common/variables.scss';
+@import './components/list-item.scss';
+
+.card {
+    position: relative;
+    max-width: 420px;
+    width: 100%;
+    height: 540px;
+    margin: 30px 35px;
+
+    &:after {
+        position: absolute;
+        left:0;
+        z-index: 1;
+        content: '';
+        top: -25px;
+        max-width: 390px;
+        width: 95%;
+        height: 110px;
+        border-radius: 30px;
+        transform: skew(0deg, -3deg);
+        background: linear-gradient(176deg, $cardOneGradientTop 0%, $cardOneGradientBottom 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &:before {
+        position: absolute;
+        left:0;
+        z-index: 1;
+        content: '';
+        top: -45px;
+        max-width: 340px;
+        width: 80%;
+        height: 110px;
+        border-radius: 30px;
+        transform: skew(0deg, -6deg);
+        background: linear-gradient(179deg, $cardTwoGradientTop 0%, $cardTwoGradientBottom 60%, $cardTwoGradientBottom 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    &__inner {
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: $mainColor;
+        position: relative;
+
+        padding: 30px 16px 9px 30px;
+        box-shadow: 0px 14px 34px rgba(0, 0, 0, 0.35);
+        border-radius: 20px 0px 40px;
+
+
+    }
+
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-right: 14px;
+    }
+
+    &__body {
+        z-index: 0;
+        position: relative;
+        box-shadow: -18px -21px 26px -13px $mainColor inset;
+
+        &::before {
+            position: absolute;
+            right:4px;
+            bottom:-15px;
+            width: 100%;
+            height: 30px;
+            content: '';
+            background: linear-gradient(180deg, rgba(37, 46, 66, 0) 0%, $mainColor 40%, $mainColor 100% );
+        }
+
+        &::after {
+            position: absolute;
+            right:4px;
+            top:0;
+            width: 34px;
+            height: 100%;
+            content: '';
+            background: linear-gradient(90deg, rgba(37,46,66,0) 0%, $mainColor 86%, $mainColor 100%);
+        }
+    }
+
+    &__list {
+        padding-right: 14px;
+        height: 430px;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        scrollbar-width: thin;
+        scrollbar-color: $mainColor transparent;
+
+        &::-webkit-scrollbar,
+        &::-webkit-scrollbar {
+            height: 4px;
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-track,
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        &::-webkit-scrollbar-thumb,
+        &::-webkit-scrollbar-thumb {
+            background-color: $primaryColor;
+            border-radius: 5px;
+            border: 4px solid transparent;
+        }
+    }
+
+    &__button {
+        padding: 5px 10px;
+        background-color: $primaryColor;
+        transition: background-color 500ms ease 0ms;
+
+        &:hover {
+            background-color: $primaryBtnHoverColor;
+            transition: background-color 500ms ease 0ms;
+        }
+    }  
+}
+
+@media screen and (max-width: 767px) {
+    .card {
+        margin: 30px 0;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .card {
+        &:after {
+            width: 85%;
+        }
+    
+        &:before {
+            width: 70%;            
+        }
+    }
+}
